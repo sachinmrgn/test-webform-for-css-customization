@@ -10,120 +10,136 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Customized Contact Form</title>
     <style>
-        /* --- Custom Form Styles --- */
+        /* --- NEW Custom Form Styles for Two-Column Layout --- */
 
-        /* Sets a background for the whole page to make the form stand out */
+        /* Basic page setup for a clean look */
         body {
-            background-color: #f0f2f5;
-            font-family: Arial, Helvetica, sans-serif;
+            background-color: #FFFFFF; /* White background to match the minimalist style */
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
             display: flex;
             justify-content: center;
-            align-items: center;
-            padding: 40px;
+            padding: 20px;
         }
 
-        /* Main Form Container - We override the default styles here */
+        /* Main Form Container */
         .fserv-container {
-            /* Using !important to ensure our styles take precedence */
             width: 100% !important;
-            max-width: 600px !important;
+            max-width: 800px !important; /* Widen the form for two columns */
             background-color: #FFFFFF !important;
-            border-radius: 8px !important;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
-            padding: 40px !important;
-            margin: 0 !important;
-            border-top: none !important; /* Remove the default top border */
+            box-shadow: none !important; /* Remove the card shadow */
+            padding: 20px !important;
+            border: none !important; /* Remove all borders */
         }
 
-        /* Form Title ("Contact us form") */
-        .fserv-form-name {
-            font-size: 28px !important;
-            font-weight: bold;
-            color: #1c1e21 !important;
-            margin-bottom: 10px;
-            padding-bottom: 15px;
-            border-bottom: 1px solid #dddfe2;
-            text-align: center;
-        }
-        /* Remove the underline from the original styles */
-        .fserv-container .fserv-form-name:after {
-            display: none;
-        }
-
-
-        /* Form Description ("Please share your details with us") */
-        .fserv-form-description {
-            font-size: 16px !important;
-            color: #606770 !important;
-            text-align: center;
-            margin-bottom: 30px !important;
-        }
-
-        /* Style for each field's label (e.g., "Mobile", "First name") */
-        .fserv-label {
-            font-size: 14px !important;
-            font-weight: 600 !important;
-            color: #4b4f56 !important;
-            margin-bottom: 8px !important;
+        /* Hide the default Title and Description for a cleaner look like the screenshot */
+        .fserv-form-name, .fserv-form-description {
+            display: none !important;
         }
         
-        /* General styling for all input fields, textareas, and selects */
-        .fserv-input-text, .fserv-select, .fsa-country-phone input {
+        /* This is the key for the two-column layout. We use CSS Grid. */
+        .fserv-container form {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Create two equal-width columns */
+            gap: 25px 20px; /* 25px space between rows, 20px between columns */
+        }
+
+        /* Target each form field's container */
+        .fserv-field {
+            margin: 0 !important; /* Reset margin since grid gap handles spacing */
+        }
+
+        /* --- If you add a "Comments" or other full-width field --- */
+        /* To make a field span both columns, you would need to target its specific class. */
+        /* For example, if you had a textarea with a unique class 'formserv-comments-field': */
+        .formserv-comments-field {
+             grid-column: 1 / -1; /* This makes the element span the full width */
+        }
+        /* The submit button should also be full-width */
+        .fserv-container form > div:last-of-type {
+             grid-column: 1 / -1;
+        }
+        
+
+        /* Style for each field's label (e.g., "First Name*", "Email*") */
+        .fserv-label {
+            font-size: 14px !important;
+            font-weight: 600 !important; /* Bolder text */
+            color: #222222 !important;
+            margin-bottom: 8px !important;
+            display: block; /* Ensure it's on its own line */
+        }
+        
+        /* The red asterisk for required fields, already handled by Freshworks CSS */
+        .fserv-required label.fserv-label:after {
+            content: " *";
+            color: #d9534f;
+        }
+
+        /* General styling for all input fields, selects, etc. */
+        .fserv-input-text, .fserv-select, .fsa-country-phone input, .fserv-textarea {
             width: 100% !important;
-            padding: 12px !important;
-            border: 1px solid #ccd0d5 !important;
+            padding: 12px 15px !important;
+            border: 1px solid #dcdfe3 !important; /* Light grey border */
             border-radius: 6px !important;
-            background-color: #f5f6f7 !important;
+            background-color: #FFFFFF !important; /* Pure white background */
             font-size: 16px !important;
-            color: #1c1e21 !important;
-            box-sizing: border-box; /* Ensures padding doesn't affect width */
+            color: #333333 !important;
+            box-sizing: border-box;
             transition: border-color 0.2s, box-shadow 0.2s;
         }
 
-        /* Style for the country selector dropdown */
-        .fsa-country-phone .fs-country-select {
-            border: 1px solid #ccd0d5 !important;
-            border-radius: 6px !important;
+        /* Placeholder text style */
+        .fserv-input-text::placeholder {
+            color: #a0a7b1;
+            opacity: 1;
         }
-        
+
         /* Focus style for when a user clicks into a field */
-        .fserv-input-text:focus, .fserv-select:focus, .fsa-country-phone input:focus {
-            border-color: #ce0000 !important; /* Red border on focus */
-            box-shadow: 0 0 0 2px rgba(206, 0, 0, 0.2) !important;
-            outline: none; /* Remove default blue outline */
-            background-color: #FFFFFF !important;
+        .fserv-input-text:focus, .fserv-select:focus, .fsa-country-phone input:focus, .fserv-textarea:focus {
+            border-color: #007bff !important; /* A standard blue for focus */
+            box-shadow: 0 0 0 2px rgba(0, 123, 255, 0.15) !important;
+            outline: none;
         }
 
         /* Submit Button Styling */
         button.fserv-button-submit {
             width: 100%;
-            padding: 12px 20px !important;
-            font-size: 18px !important;
-            font-weight: bold !important;
+            padding: 14px 20px !important;
+            font-size: 16px !important;
+            font-weight: 600 !important;
             color: #FFFFFF !important;
-            background-color: #ce0000 !important; /* Bold Red Color */
+            background-color: #222222 !important; /* Black button to match modern aesthetic */
             border: none !important;
             border-radius: 6px !important;
             cursor: pointer !important;
             transition: background-color 0.2s;
-            margin-top: 20px;
+            margin-top: 10px;
         }
 
         /* Hover effect for the submit button */
         button.fserv-button-submit:hover {
-            background-color: #a80000 !important; /* Darker red on hover */
+            background-color: #444444 !important; /* Slightly lighter on hover */
         }
         
-        /* Hide the "Powered by Freshsales" link for a cleaner look */
+        /* Hide the "Powered by" link */
         .powered-by {
             display: none !important;
+        }
+
+
+        /* --- Responsive Design for Mobile --- */
+        @media (max-width: 768px) {
+            .fserv-container form {
+                grid-template-columns: 1fr; /* Switch to a single column on smaller screens */
+                gap: 20px; /* Adjust row spacing */
+            }
         }
 
     </style>
 </head>
 <body data-new-gr-c-s-check-loaded="14.1255.0" data-gr-ext-installed="">
 
-    <script src="https://crm.halnath.uk/crm/sales/web_forms/8531d4ac6b6ad03331fc54550d8d45908a91d51f599a96c43ec426807cff6a96/form.js" crossorigin="anonymous" id="8531d4ac6b6ad03331fc54550d8d45908a91d51f599a96c43ec426807cff6a96_5584"></script>
+    <script src="https://crm.halnath.uk/crm/sales/web_forms/8531d4ac6b6ad03331fc54550d8d45908a91d51f599a96c43ec26807cff6a96/form.js" crossorigin="anonymous" id="8531d4ac6b6ad03331fc54550d8d45908a91d51f599a96c43ec26807cff6a96_5584"></script>
     
-    </body>
+</body>
 </html>
