@@ -2,144 +2,162 @@
 <html>
   <head>
 <style>
-/* --- General Form & Font --- */
-.fserv-container {
-    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
-    background-color: #FFFFFF !important;
-    border: none !important; /* Remove original top border */
-    box-shadow: none !important;
-    padding: 0 !important; /* Remove container padding to allow form grid to manage spacing */
-    max-width: 800px; /* Adjust width as needed */
+/* Scope everything to this specific embed to avoid global side‑effects */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-container {
+  --field-height: 44px;
+  --radius: 8px;
+  --border: #e5e7eb;
+  --label: #111827;
+  --placeholder: #9ca3af;
+  --text: #111827;
+  --bg: #ffffff;
+  --button: #53b6c1;
+  font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif !important;
+  background: var(--bg) !important;
+  border-top: 0 !important;
+  width: 100% !important;
+  max-width: 960px !important;
+  margin: 0 auto !important;
+  padding: 0 0 16px 0 !important;
 }
 
-/* --- Form Grid Layout --- */
-.fserv-form {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr); /* Create two equal columns */
-    gap: 24px 20px; /* Vertical and horizontal spacing between fields */
+/* Remove decorative underline on the embedded form title */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form-name:after {
+  display: none !important;
 }
 
-/* Make the 'Comments' field and 'Submit' button span both columns */
-.formserv-textarea-field,
-.fserv-form > div:last-of-type {
-    grid-column: 1 / -1; /* Span from the first to the last column line */
+/* Layout: two columns on ≥768px, single column on mobile */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form {
+  display: grid !important;
+  grid-template-columns: 1fr !important;
+  gap: 16px 24px !important;
+  width: 100% !important;
 }
 
-/* --- Field & Label Styling --- */
-.fserv-field {
-    margin: 0; /* Let the grid gap handle all spacing */
+/* Full‑width fields by default */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-field,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .select2-container {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
 }
 
-.fserv-label {
-    display: block;
-    margin-bottom: 8px;
-    font-weight: bold !important;
-    font-size: 14px;
-    color: #333333 !important;
+@media (min-width: 768px) {
+  .fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form {
+    grid-template-columns: 1fr 1fr !important;
+  }
+  /* Make the comments textarea span full width in two‑column layout */
+  .fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .formserv-textarea-field {
+    grid-column: 1 / -1 !important;
+  }
 }
 
-/* --- Input, Select, and Textarea Styling --- */
-.fserv-input-text,
-.fserv-select,
-.fserv-textarea {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #dcdcdc !important; /* A subtle grey border */
-    border-radius: 5px;
-    box-sizing: border-box; /* Ensures padding doesn't affect the width */
-    font-size: 16px;
-    background-color: #fff !important;
-    color: #333 !important;
-    /* Resetting old styles */
-    line-height: normal; 
+/* Labels: compact and clear */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-label {
+  color: var(--label) !important;
+  font-weight: 600 !important;
+  font-size: 14px !important;
+  margin: 0 0 6px 0 !important;
+  display: block !important;
 }
 
-/* --- Focus State --- */
-.fserv-input-text:focus,
-.fserv-select:focus,
-.fserv-textarea:focus {
-    outline: none !important;
-    border-color: #53b6c1 !important; /* Highlight with the theme color */
-    box-shadow: 0 0 0 2px rgba(83, 182, 193, 0.2); /* Soft glow on focus */
+/* Reset legacy underline‑only inputs to bordered cards */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea {
+  width: 100% !important;
+  background: #fff !important;
+  color: var(--text) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  padding: 12px 14px !important;
+  line-height: 1.4 !important;
+  box-sizing: border-box !important;
 }
 
-/* --- Placeholder Text --- */
-::placeholder {
-  color: #999999;
-  opacity: 1; 
+/* Input heights */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select {
+  height: var(--field-height) !important;
+}
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea {
+  min-height: 120px !important;
+  resize: vertical !important;
 }
 
-/* --- Custom Arrow for Select Dropdowns --- */
-.formserv-select-field {
-    position: relative;
+/* Placeholders */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 input::placeholder,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 textarea::placeholder {
+  color: var(--placeholder) !important;
 }
 
-.fserv-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    appearance: none;
-    background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%22292.4%22%20height%3D%22292.4%22%3E%3Cpath%20fill%3D%22%23666666%22%20d%3D%22M287%2069.4a17.6%2017.6%200%200%200-13-5.4H18.4c-5%200-9.3%201.8-12.9%205.4A17.6%2017.6%200%200%200%200%2082.2c0%205%201.8%209.3%205.4%2012.9l128%20127.9c3.6%203.6%207.8%205.4%2012.8%205.4s9.2-1.8%2012.8-5.4L287%2095c3.5-3.5%205.4-7.8%205.4-12.8%200-5-1.9-9.4-5.4-12.8z%22%2F%3E%3C%2Fsvg%3E');
-    background-repeat: no-repeat;
-    background-position: right 15px center;
-    background-size: 10px auto;
-    padding-right: 40px; /* Make space for the arrow */
+/* Country phone component: make the host fill available width */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 fsa-country-phone {
+  display: block !important;
+  width: 100% !important;
 }
 
-/* Hide the extra select2 elements that interfere with styling */
-.select2-container {
-    display: none !important;
+/* Hide the hidden duplicate mobile input that Freshsales injects */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 input.fserv-input-text[name="contact[mobile_number]"] {
+  display: none !important;
 }
 
-/* --- Phone Input Specific Styling --- */
-/* The phone input is a custom component, so we style its wrapper */
-fsa-country-phone {
-    display: flex !important;
+/* Select2: normalize to 44px control height */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .select2-container .select2-selection--single {
+  height: var(--field-height) !important;
+  border: 1px solid var(--border) !important;
+  border-radius: var(--radius) !important;
+  display: flex !important;
+  align-items: center !important;
+  padding: 0 36px 0 12px !important;
+  box-sizing: border-box !important;
+}
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .select2-selection__rendered {
+  line-height: 1.2 !important;
+  color: var(--text) !important;
+  padding-left: 0 !important;
+}
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .select2-selection__arrow {
+  height: var(--field-height) !important;
+  right: 8px !important;
 }
 
-fsa-country-phone .fs-country-select {
-    border: 1px solid #dcdcdc;
-    border-right: none;
-    border-radius: 5px 0 0 5px;
+/* Submit row: remove top border and tighten spacing */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form .fserv-field + div:not(.fserv-field) {
+  border-top: 0 !important;
+  padding-top: 4px !important;
+  width: 100% !important;
 }
 
-fsa-country-phone .fs-phone-input {
-    border: 1px solid #dcdcdc !important;
-    border-radius: 0 5px 5px 0 !important;
-    padding: 12px;
-    font-size: 16px;
-    box-shadow: none !important;
+/* Button styling to match clean form look */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-button-submit {
+  background: var(--button) !important;
+  height: var(--field-height) !important;
+  border-radius: var(--radius) !important;
+  font-size: 16px !important;
+  font-weight: 600 !important;
+  padding: 0 20px !important;
 }
 
-/* --- Textarea --- */
-.fserv-textarea {
-    min-height: 120px;
-    resize: vertical;
+/* Simple error visuals */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-control {
+  color: #dc2626 !important;
+  font-size: 12px !important;
+  margin-top: 6px !important;
+}
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text:invalid,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select:invalid,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea:invalid {
+  border-color: #dc2626 !important;
 }
 
-/* --- Submit Button --- */
-.fserv-button-submit {
-    display: inline-block;
-    padding: 12px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    color: #ffffff !important;
-    background-color: #53b6c1 !important;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    width: auto;
-    height: auto;
+/* Undo legacy underline/bottom‑border rules from the default theme */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea {
+  border-bottom-width: 1px !important; /* keep full border box */
 }
 
-.fserv-button-submit:hover {
-    background-color: #439aa3 !important; /* Darker shade on hover */
-}
-
-/* --- Hide unnecessary elements --- */
-.powered-by {
-    display: none !important;
-}
 </style>
     
   </head>
