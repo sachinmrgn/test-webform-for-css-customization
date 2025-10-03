@@ -1,6 +1,157 @@
 <!DOCTYPE HTML>
 <html>
-  <head></head>
+  <head>
+<style>
+  /* Main container styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-container {
+    background-color: #ffffff !important;
+    border: none !important;
+    border-radius: 8px !important;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1) !important;
+    padding: 40px !important;
+    max-width: 500px !important;
+    margin: 20px auto !important;
+    font-family: 'Arial', sans-serif !important;
+}
+
+/* Remove the top colored border */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-container:before {
+    display: none !important;
+}
+
+/* Form title styling - matching the image */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form-name {
+    color: #2c3e50 !important;
+    font-size: 24px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+    margin-bottom: 10px !important;
+    text-transform: uppercase !important;
+    letter-spacing: 1px !important;
+}
+
+/* Remove the underline from form title */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form-name:after {
+    display: none !important;
+}
+
+/* Form description styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form-description {
+    color: #7f8c8d !important;
+    font-size: 14px !important;
+    text-align: center !important;
+    margin-bottom: 30px !important;
+    line-height: 1.5 !important;
+}
+
+/* Label styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-label {
+    color: #2c3e50 !important;
+    font-weight: 600 !important;
+    font-size: 14px !important;
+    margin-bottom: 8px !important;
+    display: block !important;
+}
+
+/* Input field styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea {
+    width: 100% !important;
+    border: 2px solid #e9ecef !important;
+    border-radius: 6px !important;
+    padding: 12px 15px !important;
+    font-size: 14px !important;
+    background-color: #f8f9fa !important;
+    transition: all 0.3s ease !important;
+    margin-bottom: 5px !important;
+}
+
+/* Input focus state */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text:focus,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select:focus,
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea:focus {
+    border-color: #3498db !important;
+    background-color: #ffffff !important;
+    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.1) !important;
+    outline: none !important;
+}
+
+/* Submit button styling - matching the blue from image */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-button-submit {
+    background-color: #2980b9 !important;
+    color: white !important;
+    border: none !important;
+    border-radius: 6px !important;
+    padding: 14px 30px !important;
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.5px !important;
+    width: 100% !important;
+    margin-top: 20px !important;
+    cursor: pointer !important;
+    transition: all 0.3s ease !important;
+}
+
+/* Button hover state */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-button-submit:hover {
+    background-color: #2471a3 !important;
+    transform: translateY(-2px) !important;
+    box-shadow: 0 4px 8px rgba(41, 128, 185, 0.3) !important;
+}
+
+/* Field container spacing */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-field {
+    margin-bottom: 20px !important;
+}
+
+/* Required field asterisk */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-required .fserv-label:after {
+    color: #e74c3c !important;
+}
+
+/* Placeholder text */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-input-text::placeholder {
+    color: #95a5a6 !important;
+    opacity: 1 !important;
+}
+
+/* Select dropdown styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-select {
+    appearance: none !important;
+    background-image: url("data:image/svg+xml;charset=US-ASCII,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'><path fill='%23666' d='M2 0L0 2h4zm0 5L0 3h4z'/></svg>") !important;
+    background-repeat: no-repeat !important;
+    background-position: right 15px center !important;
+    background-size: 12px !important;
+}
+
+/* Textarea specific styling */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-textarea {
+    min-height: 100px !important;
+    resize: vertical !important;
+}
+
+/* Hide the powered by link */
+.fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .powered-by {
+    display: none !important;
+}
+
+/* Mobile responsiveness */
+@media screen and (max-width: 768px) {
+    .fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-container {
+        margin: 10px !important;
+        padding: 25px !important;
+    }
+    
+    .fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2 .fserv-form-name {
+        font-size: 20px !important;
+    }
+}
+</style>
+    
+  </head>
   <body>
 <script src='https://ecoadventures.myfreshworks.com/crm/sales/web_forms/38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2/form.js' crossorigin='anonymous' id='fs_38d0446ab3f473052b245b2b0d9f5febdc4b9bce91ce5648cbf54a44d6bd71f2'></script>  </body>
 </html>
+
